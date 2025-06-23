@@ -92,4 +92,5 @@ df_cleaned.drop(['hasLivingRoom'], axis=1, inplace=True)
 
 
 # Step 5: Save the cleaned dataframe to a new CSV
-df_cleaned.to_csv('Hanieh_data_cleaned.csv', index=False)
+df.to_csv(".
+/data/cleaned_data.csv", index=False)
