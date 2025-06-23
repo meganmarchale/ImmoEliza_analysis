@@ -2,7 +2,7 @@ import pandas as pd
 
 # File paths
 input_file = "/Users/meganmarchale/Documents/BeCode/Projects/ImmoEliza_analysis/data/immoweb-dataset.csv"
-output_file = "test_megan.csv"
+
 
 
 df = pd.read_csv(input_file)
@@ -42,5 +42,5 @@ heating_type()
 #print(df["heatingType"].head)
 
 
-# df.to_csv(output_file, index=False)
+df.to_csv("./data/cleaned_data.csv", index=False)
 
