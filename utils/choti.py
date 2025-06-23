@@ -21,7 +21,7 @@ df['epcScore'] = df['epcScore'].fillna("unknown")
 print("total na in epc:", df['epcScore'].isna().sum())
 
 
-#buildingCondition 
+#buildingCondition fill with unknow
 df['buildingCondition'] = df['buildingCondition'].fillna("unknown")
 
 
@@ -31,13 +31,13 @@ df = df.drop("livingRoomSurface", axis='columns')
 df = df.drop("floodZoneType", axis='columns')
 
 
-# toiletCount 31.45 : if no info for bathroom + toilet : drop rows. 
+# toiletCount: if no info for bathroom + toilet : drop rows. 
 no_info_bathroom_toilet = df[(df["toiletCount"].isna()) & (df["bathroomCount"].isna())]
 no_info_bathroom_toilet_index = no_info_bathroom_toilet.index
 print(no_info_bathroom_toilet[["toiletCount","bathroomCount"]])
 df.drop(no_info_bathroom_toilet_index, inplace=True)
 
-#If toilet count > 0 but no bathroom count — droop rows.
+#If toilet count > 0 but no bathroom count — drop rows.
 
 toilet_without_bathroom =df[(df["toiletCount"] > 0) & (df["bathroomCount"].isna())]
 toilet_without_bathroom_index = toilet_without_bathroom.index
@@ -52,4 +52,4 @@ print("total na in bathroomCount:", df['bathroomCount'].isna().sum())
 
 print(f"There are {len(df)} rows of data")
 
-df.to_csv("./data/cleaned_data.csv", index=True)
+df.to_csv("./data/cleaned_data.csv", index=False)
